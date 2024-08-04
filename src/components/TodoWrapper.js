@@ -7,10 +7,9 @@ import { EditTodoForm } from './EditTodoForm';
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([])
 
-  //function
   const addTodo = (todo) => {
     setTodos([...todos, {id: uuidv4(), task: todo, completed: false, isEditing: false}]);
-    console.log(todos);
+    // console.log(todos);
   }
 
   const toggleComplete = (id) => {
@@ -32,20 +31,22 @@ export const TodoWrapper = () => {
   return (
     <div className='TodoWrapper'>
        <h1>Get Things Done!</h1>
-       <TodoForm addTodo={addTodo}/>      {/* property={function} */}
-       { todos.map((todo, index) => (
-          todo.isEditing ? (
-            <EditTodoForm editTodo={editTask} task={todo}/>
-          ) : (
-            <Todo 
-                task={todo} 
-                key={index} 
-                toggleComplete={toggleComplete}
-                deleteTodo={deleteTodo}
-                editTodo={editTodo}
-            />
-          )
-       ))}
+       <TodoForm addTodo={addTodo}/>    
+       { 
+          todos.map((todo, index) => (
+              todo.isEditing ? (
+                <EditTodoForm editTodo={editTask} task={todo}/>
+              ) : (
+                <Todo 
+                    task={todo} 
+                    key={index} 
+                    toggleComplete={toggleComplete}
+                    deleteTodo={deleteTodo}
+                    editTodo={editTodo}
+                />
+              )
+          ))
+       }
     </div>
   )
 }

@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 export const TodoForm = ({addTodo}) => {
   const [value, setValue] = useState('');
 
+  // capture the value of the state upon submitting the form
   const handleSubmit = (e) => {
-      e.preventDefault();
+      e.preventDefault();   //prevent default reload of the page
       // console.log(value);
       addTodo(value);
       setValue('');
